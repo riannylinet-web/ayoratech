@@ -27,6 +27,24 @@
         <div class="container">
             <h2 class="section-title">All Products</h2>
             
+            <!-- SEARCH BAR AT THE TOP -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" 
+                           id="productSearch" 
+                           placeholder="Search laptops or accessories... (e.g., 'HP i7', 'mouse', '16GB RAM')"
+                           autocomplete="off">
+                    <button id="clearSearch" title="Clear search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-hint">
+                    Try: "Dell", "MacBook", "Charger", "i5", "512GB"
+                </div>
+                <div class="search-results-info" id="searchResultsInfo"></div>
+            </div>
+            
             <!-- FILTER BUTTONS -->
             <div class="filter-buttons">
                 <button class="filter-btn active" data-filter="all">All Products</button>
@@ -37,21 +55,52 @@
             <!-- PRODUCT GRID -->
             <div class="product-grid">
                 <!-- LAPTOPS (10) -->
-                <div class="product-card" data-category="laptop" data-name="HP EliteBook i7" data-price="KSH 26,000">
-                    <img src="laptop 1.jpeg" alt="HP EliteBook i7" 
+                <div class="product-card" data-category="laptop" data-name="HP EliteBook i7" data-price="KSH 28,000">
+                    <img src="laptop 14.jpg" alt="HP EliteBook i7" 
                          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
-                    <h3>HP EliteBook i7</h3>
-                    <p>16GB RAM • 256GB SSD</p>
+                    <h3>HP EliteBook folio i7</h3>
+                    <p>8GB RAM • 256GB SSD</p>
+                    <span class="product-price">KSH 28,000</span>
+                    <button class="whatsapp-btn">Buy via WhatsApp</button>
+                </div>
+
+                <div class="product-card" data-category="laptop" data-name="HP EliteBook 840 i5" data-price="KSH 26,000">
+                    <img src="laptop 2.jpeg" alt="HP Elitebook 840 g5 i5"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
+                    <h3>HP EliteBook 840 g5 i5</h3>
+                    <p>8GB RAM • 256GB SSD</p>
                     <span class="product-price">KSH 26,000</span>
                     <button class="whatsapp-btn">Buy via WhatsApp</button>
                 </div>
 
-                <div class="product-card" data-category="laptop" data-name="HP ProBook i5" data-price="KSH 24,000">
-                    <img src="laptop 2.jpeg" alt="HP ProBook i5"
+<div class="product-card" data-category="laptop" data-name="Dell Latitude 3400 i5" data-price="KSH 28,000">
+                    <img src="laptop 12.jpg" alt="HP Elitebook 840 g5 i5"
                          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
-                    <h3>HP ProBook i5</h3>
+                    <h3> Dell latitude 3400 </h3>
                     <p>8GB RAM • 256GB SSD</p>
-                    <span class="product-price">KSH 24,000</span>
+                    <span class="product-price">KSH 28,000</span>
+                    <button class="whatsapp-btn">Buy via WhatsApp</button>
+                </div>
+
+
+                
+<div class="product-card" data-category="laptop" data-name="Dell Latitude 6320 i5" data-price="KSH 25,000">
+                    <img src="laptop 11.jpg" alt="Dell Latitude 6320 i5"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
+                    <h3> Dell latitude 6320 intel i5</h3>
+                    <p>4GB RAM • 500GB HDD</p>
+                    <span class="product-price">KSH 25,000</span>
+                    <button class="whatsapp-btn">Buy via WhatsApp</button>
+                </div>
+
+
+                
+<div class="product-card" data-category="laptop" data-name="Dell inspiron 13 7390 i5" data-price="KSH 29,000">
+                    <img src="laptop 13.jpg" alt="Dell inspiron 13 7390"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
+                    <h3> Dell inspiron 13 7390 </h3>
+                    <p>8GB RAM • 256GB SSD TOUCHSCREEN</p>
+                    <span class="product-price">KSH 29,000</span>
                     <button class="whatsapp-btn">Buy via WhatsApp</button>
                 </div>
 
@@ -155,6 +204,27 @@
                     <button class="whatsapp-btn">Buy via WhatsApp</button>
                 </div>
 
+
+
+                <div class="product-card" data-category="accessory" data-name="Epson Ecotank l3211" data-price="KSH 29,000">
+                    <img src="printer 2.jpg" alt="Epson l3211"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
+                    <h3>Epson Ecotank l3211</h3>
+                    <p> ALL-IN-ONE TANK PRINTER</p>
+                    <span class="product-price">KSH 29,000</span>
+                    <button class="whatsapp-btn">Buy via WhatsApp</button>
+                </div>
+
+
+                            <div class="product-card" data-category="accessory" data-name="Epson Ecotank l3250" data-price="KSH 31,000">
+                    <img src="printer 1.jpg" alt="Epson l3250"
+                         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
+                    <h3>Epson Ecotank l3250</h3>
+                    <p> ALL-IN-ONE TANK PRINTER</p>
+                    <span class="product-price">KSH 31,000</span>
+                    <button class="whatsapp-btn">Buy via WhatsApp</button>
+                </div>
+
                 <div class="product-card" data-category="accessory" data-name="USB Keyboard" data-price="KSH 900">
                     <img src="keyboard.jpg" alt="USB Keyboard"
                          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80';">
@@ -218,13 +288,17 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p class="footer-main">Copyright © 2025 AYORA TECH</p>
+            <p class="footer-main"> Copyright © 2025 AYORA TECH</p>
             <p>Your Trusted Technology Partner in Nyeri, Kenya</p>
             <p class="footer-credit">CREATED BY AYORA BRIAN</p>
         </div>
     </footer>
 
+    <!-- WhatsApp Direct Button (Optional) -->
+    <a href="https://wa.me/254112318201" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="products-script.js"></script>
 </body>
 </html>
-
