@@ -1,76 +1,178 @@
 // WhatsApp phone number
 const phoneNumber = "254112318201";
 
-// Function to send product to WhatsApp with image
+// ========== SEARCH FUNCTIONALITY ========== //
+function initializeSearch() {
+    const searchInput = document.getElementById('productSearch');
+    const clearBtn = document.getElementById('clearSearch');
+    const productCards = document.querySelectorAll('.product-card');
+    const searchResultsInfo = document.getElementById('searchResultsInfo');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    
+    if (!searchInput) return;
+    
+    // Clear search button
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.focus();
+            performSearch('');
+        });
+    }
+    
+    // Real-time search
+    let searchTimeout;
+    searchInput.addEventListener('input', function(e) {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(e.target.value);
+        }, 200);
+    });
+    
+    // Perform the actual search
+    function performSearch(searchTerm = '') {
+        searchTerm = searchTerm.toLowerCase().trim();
+        const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+        let visibleCount = 0;
+        
+        productCards.forEach(card => {
+            const productName = card.dataset.name.toLowerCase();
+            const productCategory = card.dataset.category;
+            const productText = card.textContent.toLowerCase();
+            
+            // Check if card passes the active filter
+            const passesFilter = activeFilter === 'all' || productCategory === activeFilter;
+            
+            // Check if card matches search term
+            let matchesSearch = true;
+            if (searchTerm) {
+                matchesSearch = productName.includes(searchTerm) ||
+                              productText.includes(searchTerm) ||
+                              productCategory.includes(searchTerm);
+            }
+            
+            // Show/hide card
+            const shouldShow = passesFilter && matchesSearch;
+            card.style.display = shouldShow ? 'flex' : 'none';
+            
+            if (shouldShow) {
+                visibleCount++;
+                
+                // Highlight matching text (optional)
+                if (searchTerm) {
+                    highlightText(card, searchTerm);
+                } else {
+                    removeHighlights(card);
+                }
+            } else {
+                removeHighlights(card);
+            }
+        });
+        
+        // Update search results info
+        updateSearchInfo(searchTerm, visibleCount, activeFilter);
+    }
+    
+    // Highlight matching text
+    function highlightText(element, searchTerm) {
+        removeHighlights(element);
+        const regex = new RegExp(`(${searchTerm})`, 'gi');
+        const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        let node;
+        
+        while (node = walker.nextNode()) {
+            if (node.textContent.match(regex)) {
+                nodes.push(node);
+            }
+        }
+        
+        nodes.forEach(node => {
+            const span = document.createElement('span');
+            span.className = 'search-match';
+            span.innerHTML = node.textContent.replace(regex, '<mark>$1</mark>');
+            node.parentNode.replaceChild(span, node);
+        });
+    }
+    
+    // Remove highlights
+    function removeHighlights(element) {
+        const matches = element.querySelectorAll('.search-match');
+        matches.forEach(match => {
+            const text = document.createTextNode(match.textContent);
+            match.parentNode.replaceChild(text, match);
+        });
+    }
+    
+    // Update search results information
+    function updateSearchInfo(searchTerm, visibleCount, activeFilter) {
+        if (!searchResultsInfo) return;
+        
+        let message = '';
+        
+        if (searchTerm) {
+            message = `Found ${visibleCount} product${visibleCount !== 1 ? 's' : ''} for "${searchTerm}"`;
+            if (activeFilter !== 'all') {
+                message += ` in ${activeFilter === 'laptop' ? 'Laptops' : 'Accessories'}`;
+            }
+            searchResultsInfo.style.display = 'block';
+        } else if (activeFilter !== 'all') {
+            message = `Showing ${visibleCount} ${activeFilter === 'laptop' ? 'laptop' : 'accessory'} product${visibleCount !== 1 ? 's' : ''}`;
+            searchResultsInfo.style.display = 'block';
+        } else {
+            searchResultsInfo.style.display = 'none';
+            return;
+        }
+        
+        searchResultsInfo.textContent = message;
+    }
+    
+    // Sync search with filter buttons
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const searchTerm = searchInput.value;
+            performSearch(searchTerm);
+        });
+    });
+    
+    // Initial search state
+    performSearch('');
+}
+
+// ========== WHATSAPP FUNCTION (DIRECT) ========== //
 function sendToWhatsApp(button) {
     const productCard = button.closest('.product-card');
     const productName = productCard.dataset.name;
     const productPrice = productCard.dataset.price;
-    const productImage = productCard.querySelector('img').src;
     const productCategory = productCard.dataset.category;
     const productDescription = productCard.querySelector('p').textContent;
 
-    // Create detailed WhatsApp message
-    const message = `🛒 PRODUCT INQUIRY - AYORA TECH 🛒
+    // Simple WhatsApp message
+    const message = `Hello AYORA TECH,
 
-📦 Product Details:
-• Product: ${productName}
-• Category: ${productCategory === 'laptop' ? 'Laptop' : 'Accessory'}
-• Price: ${productPrice}
-• Description: ${productDescription}
+I'm interested in this product:
 
-🖼️ Product Image: ${productImage}
+📦 Product: ${productName}
+💰 Price: ${productPrice}
+📝 Description: ${productDescription}
 
----
-👤 My Details:
-• Name: [Your Name]
-• Phone: [Your Phone Number]
-• Location: [Your Location]
+Please send me more details.`;
 
-💬 Questions:
-[Any questions about this product?]
-
-📍 I saw this product on AYORA TECH website
-📅 Inquiry Date: ${new Date().toLocaleDateString('en-KE')}
-`;
-
-    // Create success notification
-    showNotification();
-
-    // Open WhatsApp with the message
+    // Open WhatsApp
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappURL, '_blank');
 }
 
-// Function to show notification
-function showNotification() {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = 'whatsapp-notification';
-    notification.innerHTML = `
-        <i class="fab fa-whatsapp"></i>
-        <span>Opening WhatsApp with product details...</span>
-    `;
-    
-    // Add to page
-    document.body.appendChild(notification);
-    
-    // Show notification
-    notification.style.display = 'flex';
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.style.animation = 'slideIn 0.3s ease reverse';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
-}
-
-// Add event listeners to all WhatsApp buttons
+// ========== MAIN INITIALIZATION ========== //
 document.addEventListener('DOMContentLoaded', function() {
-    const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
+    // Initialize search
+    initializeSearch();
     
+    // Add WhatsApp button event listeners
+    const whatsappButtons = document.querySelectorAll('.whatsapp-btn');
     whatsappButtons.forEach(button => {
         button.addEventListener('click', function() {
             sendToWhatsApp(this);
@@ -83,54 +185,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove('active'));
-            
-            // Add active class to clicked button
             this.classList.add('active');
             
             const filter = this.dataset.filter;
             
-            // Filter products
             productCards.forEach(card => {
                 if (filter === 'all' || card.dataset.category === filter) {
                     card.style.display = 'flex';
-                    card.style.flexDirection = 'column';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
                 } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(10px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
+                    card.style.display = 'none';
                 }
             });
         });
-    });
-    
-    // Make product cards more interactive
-    productCards.forEach(card => {
-        // Add hover effect for touch devices
-        card.addEventListener('touchstart', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        
-        card.addEventListener('touchend', function() {
-            this.style.transform = 'translateY(0)';
-        });
-        
-        // Preload images for better performance
-        const img = card.querySelector('img');
-        if (img && !img.complete) {
-            img.addEventListener('load', function() {
-                this.style.opacity = '1';
-            });
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-        }
     });
     
     // Set active nav link
@@ -140,22 +207,4 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
         }
     });
-});
-
-// Make whole product card clickable on mobile
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth <= 768) {
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', function(e) {
-                // Only trigger if not clicking on the button
-                if (!e.target.closest('.whatsapp-btn')) {
-                    const whatsappBtn = this.querySelector('.whatsapp-btn');
-                    if (whatsappBtn) {
-                        sendToWhatsApp(whatsappBtn);
-                    }
-                }
-            });
-        });
-    }
 });
