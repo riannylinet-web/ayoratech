@@ -3,75 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AYORA TECH – Premium laptops, accessories, and professional laptop repair services in Nyeri, Kenya. Order via WhatsApp.">
+    <meta name="description" content="AYORA TECH – Affordable laptops, accessories, and professional laptop repair services in Nyeri, Kenya. Order via WhatsApp.">
     <meta name="keywords" content="laptops Nyeri, laptop repair Nyeri, HP Dell Lenovo laptops Kenya, AYORA TECH">
     <meta name="author" content="AYORA TECH">
     <title>AYORA TECH | Premium Laptops & Repairs in Nyeri, Kenya</title>
-    
-    <!-- Modern Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <header class="navbar">
-        <div class="logo-wrapper">
-            <div class="logo-icon">A</div>
-            <div class="logo-text">
-                <h1 class="logo">AYORA</h1>
-                <span class="logo-sub">TECH</span>
-            </div>
-        </div>
+        <h1 class="logo">AYORA TECH</h1>
         <nav>
-            <a href="index.html" class="active">Home</a>
+            <a href="#home" class="active">Home</a>
             <a href="products.html">Products</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <!-- Hero Section with Floating Laptop -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
-        <!-- Background Glowing Orbs -->
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
-
-        <div class="hero-content">
-            <div class="hero-glass-card">
-                <div class="hero-badge">
-                    <i class="fas fa-star"></i> #1 Tech Hub in Nyeri
-                </div>
-                <h2>Redefining <span class="gradient-text">Tech</span> in Kenya</h2>
-                <p class="hero-subtext">
-                    Premium laptops, accessories, and expert repair services. 
-                    Powered by reliability, designed for the future.
-                </p>
-                <div class="hero-buttons">
-                    <a href="products.html" class="btn-primary">
-                        <i class="fas fa-laptop"></i> Shop Now
-                    </a>
-                    <a href="contact.html" class="btn-outline">
-                        <i class="fas fa-comments"></i> Get Support
-                    </a>
-                </div>
-            </div>
+        <h2>Smart Tech. Smart Prices.</h2>
+        <p class="hero-subtext">
+            The best tech for your  quality laptops, reliable accessories, and expert repairs, 
+            all designed to keep you moving forward in Nyeri and beyond.
+        </p>
+        
+        <div class="hero-buttons">
+            <a href="products.html" class="btn-primary">
+                <i class="fas fa-laptop"></i> Shop Laptops
+            </a>
+            <a href="contact.html" class="btn-outline">
+                <i class="fas fa-comments"></i> Talk to Us
+            </a>
         </div>
 
-        <!-- The Fancy Floating Laptop -->
-        <div class="floating-laptop-container">
-            <div class="glow-effect"></div>
-            <div class="glow-ring"></div>
-            <!-- Exact image name uploaded -->
-            <img src="laptop 1.jpg" alt="Floating HP Laptop" class="floating-laptop">
-            <div class="shadow-ellipse"></div>
+        <!-- Image Slider - THREE DIFFERENT IMAGES -->
+        <div class="slider-section">
+            <div class="slider">
+                <div class="slides">
+                    <!-- 1. PRINTER IMAGE -->
+                    <div style="position: relative;">
+                        <img src="home 3.jpg" 
+                             alt="High-Quality Printers - AYORA TECH" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1570585420362-978945f91d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';">
+                        <div class="image-label">Premium Printers</div>
+                    </div>
+                    
+                    <!-- 2. LAPTOP IMAGE -->
+                    <div style="position: relative;">
+                        <img src="laptop.jpg" 
+                             alt="Latest Laptops - AYORA TECH" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';">
+                        <div class="image-label">Quality Laptops</div>
+                    </div>
+                    
+                    <!-- 3. KEYBOARD IMAGE -->
+                    <div style="position: relative;">
+                        <img src="keyboard.jpg" 
+                             alt="Gaming Keyboards - AYORA TECH" 
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';">
+                        <div class="image-label">Gaming Keyboards</div>
+                    </div>
+                </div>
+                
+                <!-- Modified AYORA TECH Overlay -->
+                <div class="slider-overlay">
+                    <div class="brand-text">AYORA TECH</div>
+                    <div class="brand-subtitle">Complete Tech Solutions</div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <div class="slider-controls">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features">
-        <h2>Why Choose <span class="gradient-text">AYORA TECH?</span></h2>
+        <h2>Why Choose AYORA TECH?</h2>
         <div class="features-grid">
             <div class="feature-card fade-in">
                 <div class="feature-icon">
@@ -101,7 +116,7 @@
 
     <!-- Testimonials -->
     <section class="testimonials">
-        <h2>What Our <span class="gradient-text">Customers Say</span></h2>
+        <h2>What Our Customers Say</h2>
         <div class="testimonial-grid">
             <div class="testimonial-card fade-in">
                 <p>"Bought a laptop and printer from AYORA TECH - both work perfectly. Fast service and excellent support!"</p>
@@ -150,4 +165,6 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
+
