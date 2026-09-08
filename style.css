@@ -5,7 +5,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -16,48 +16,61 @@ body {
 }
 
 /* =====================
-   NAVBAR
+   MODERNIZED NAVBAR & LOGO
 ===================== */
 .navbar {
-    background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     color: white;
-    padding: 1.2rem 2.5rem;
+    padding: 1rem 2.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background: #0f172a;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #4fc3f7, #2979ff);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+    animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(79, 195, 247, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(79, 195, 247, 0.9); }
 }
 
 .logo {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    background: linear-gradient(270deg, #4fc3f7, #2979ff, #4fc3f7);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: logoGradient 8s ease infinite;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-@keyframes logoGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.logo:hover {
-    transform: scale(1.05);
+    color: white;
 }
 
 nav {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
 }
 
 nav a {
@@ -71,7 +84,7 @@ nav a {
     position: relative;
 }
 
-nav a:hover {
+nav a:hover, nav a.active {
     background-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
@@ -88,65 +101,57 @@ nav a::after {
     transform: translateX(-50%);
 }
 
-nav a:hover::after {
+nav a:hover::after, nav a.active::after {
     width: 80%;
 }
 
 /* =====================
-   HERO SECTION
+   FANCY HERO SECTION
 ===================== */
 .hero {
-    padding: 5rem 2rem;
-    text-align: center;
-    background: linear-gradient(135deg, rgba(26, 35, 126, 0.9), rgba(41, 121, 255, 0.9));
-    color: white;
-    min-height: 85vh;
+    min-height: 90vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    padding: 2rem 5%;
+    background: radial-gradient(circle at 70% 30%, rgba(41, 121, 255, 0.2), transparent 50%), #0f172a;
+    color: white;
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.3) 100%);
-    z-index: 1;
-}
-
-.hero > * {
-    position: relative;
-    z-index: 2;
-}
-
-.hero h2 {
-    font-size: 3.8rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+.hero-glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
     animation: fadeInUp 1s ease-out;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
-.hero-subtext {
-    font-size: 1.4rem;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    opacity: 0.9;
-    line-height: 1.8;
-    animation: fadeInUp 1s ease-out 0.2s both;
+.hero-glass-card h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-glass-card h2 span {
+    background: linear-gradient(90deg, #4fc3f7, #00e0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-glass-card p {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
 }
 
 .hero-buttons {
     display: flex;
     gap: 1.5rem;
-    margin-bottom: 4rem;
-    animation: fadeInUp 1s ease-out 0.4s both;
 }
 
 .btn-primary, .btn-outline {
@@ -171,7 +176,7 @@ nav a:hover::after {
 .btn-outline {
     background: transparent;
     color: white;
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
 }
 
@@ -187,197 +192,76 @@ nav a:hover::after {
     box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
 }
 
-/* =====================
-   SLIDER SECTION - THREE DIFFERENT IMAGES
-===================== */
-.slider-section {
-    max-width: 1100px;
-    margin: -3rem auto 5rem;
+/* FLOATING 3D LAPTOP */
+.floating-laptop-container {
     position: relative;
-    z-index: 3;
-}
-
-.slider {
-    width: 100%;
-    height: 500px; /* Perfect height for all images */
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-    position: relative;
-    background: #111; /* Dark background for contrast */
-}
-
-.slides {
-    display: flex;
-    width: 300%;
-    height: 100%;
-    animation: slide 18s infinite ease-in-out;
-}
-
-/* PERFECT IMAGE SIZING FOR PRINTER, LAPTOP AND KEYBOARD */
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Shows full image without cropping */
-    background-color: #ffffff; /* White background for clear visibility */
-    flex-shrink: 0;
-    padding: 20px; /* More padding for better presentation */
-}
-
-/* Make images more vibrant and clear */
-.slides img {
-    filter: brightness(1.05) contrast(1.1);
-    transition: filter 0.3s ease;
-}
-
-.slides img:hover {
-    filter: brightness(1.1) contrast(1.2);
-}
-
-@keyframes slide {
-    0%, 25% { transform: translateX(0); }
-    33%, 58% { transform: translateX(-33.333%); }
-    66%, 91% { transform: translateX(-66.666%); }
-    100% { transform: translateX(0); }
-}
-
-/* Image Labels */
-.image-label {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    z-index: 3;
-    animation: labelFade 2s ease-in-out infinite;
-}
-
-@keyframes labelFade {
-    0%, 100% { opacity: 0.9; }
-    50% { opacity: 1; }
-}
-
-/* Modified AYORA TECH Text Overlay */
-.slider-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-    padding: 3rem 2rem;
-    text-align: center;
-    z-index: 2;
-}
-
-.brand-text {
-    font-size: 4rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(90deg, #4fc3f7, #2979ff, #00e0ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
-    animation: 
-        textGlow 3s ease-in-out infinite,
-        floatText 6s ease-in-out infinite;
-    position: relative;
-    display: inline-block;
-}
-
-.brand-text::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 4px;
-    background: linear-gradient(90deg, #4fc3f7, #2979ff);
-    border-radius: 2px;
-    animation: widthPulse 4s ease-in-out infinite;
-}
-
-.brand-subtitle {
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 300;
-    letter-spacing: 2px;
-    margin-top: 0.5rem;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 1s ease-out 1s both;
-}
-
-@keyframes textGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.5));
-    }
-    50% {
-        filter: drop-shadow(0 0 25px rgba(79, 195, 247, 0.8));
-    }
-}
-
-@keyframes floatText {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes widthPulse {
-    0%, 100% {
-        width: 200px;
-        opacity: 1;
-    }
-    50% {
-        width: 250px;
-        opacity: 0.8;
-    }
-}
-
-/* Slider Controls */
-.slider-controls {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 3;
-}
-
-.slider-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slider-dot.active {
-    background: #4fc3f7;
-    transform: scale(1.3);
-}
-
-/* Image Loading Placeholder */
-.image-placeholder {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+    width: 50%;
+    height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
-    font-size: 1.2rem;
-    flex-shrink: 0;
+}
+
+.glow-effect {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(79, 195, 247, 0.4), transparent 70%);
+    animation: glowPulse 4s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes glowPulse {
+    from { transform: scale(0.8); opacity: 0.5; }
+    to { transform: scale(1.2); opacity: 1; }
+}
+
+.floating-laptop {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    animation: floatAnimation 4s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes floatAnimation {
+    0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(-10deg); }
+    50% { transform: translateY(-30px) rotateX(0deg) rotateY(-5deg); }
+}
+
+.shadow-ellipse {
+    position: absolute;
+    bottom: 20px;
+    width: 50%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    filter: blur(10px);
+    animation: shadowPulse 4s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes shadowPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(0.8); opacity: 0.3; }
+}
+
+/* Responsive adjustments for the new hero */
+@media (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-glass-card {
+        margin-bottom: 4rem;
+    }
+    .floating-laptop-container {
+        width: 100%;
+        height: 400px;
+    }
 }
 
 /* =====================
@@ -388,7 +272,7 @@ nav a:hover::after {
     background: white;
 }
 
-.features h2 {
+.features h2, .testimonials h2, .cta h2 {
     text-align: center;
     font-size: 2.8rem;
     color: #1a237e;
@@ -397,7 +281,7 @@ nav a:hover::after {
     padding-bottom: 1rem;
 }
 
-.features h2::after {
+.features h2::after, .testimonials h2::after, .cta h2::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -464,13 +348,6 @@ nav a:hover::after {
 .testimonials {
     padding: 6rem 2rem;
     background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
-}
-
-.testimonials h2 {
-    text-align: center;
-    font-size: 2.8rem;
-    color: #1a237e;
-    margin-bottom: 3rem;
 }
 
 .testimonial-grid {
@@ -541,11 +418,6 @@ nav a:hover::after {
     color: white;
 }
 
-.cta h2 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-}
-
 .cta p {
     font-size: 1.3rem;
     max-width: 700px;
@@ -560,7 +432,7 @@ nav a:hover::after {
 }
 
 /* =====================
-   CALL FLOAT BUTTON
+   FLOATING BUTTONS
 ===================== */
 .call-float {
     position: fixed;
@@ -584,6 +456,28 @@ nav a:hover::after {
 .call-float:hover {
     transform: scale(1.1);
     box-shadow: 0 15px 35px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
 }
 
 /* =====================
@@ -617,133 +511,13 @@ footer {
    ANIMATIONS
 ===================== */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
     animation: fadeInUp 1s ease-out;
 }
-
-/* =====================
-   RESPONSIVE DESIGN
-===================== */
-@media (max-width: 992px) {
-    .slider {
-        height: 400px;
-    }
-    
-    .brand-text {
-        font-size: 3rem;
-        letter-spacing: 4px;
-    }
-    
-    .brand-subtitle {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    nav {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtext {
-        font-size: 1.2rem;
-        padding: 0 1rem;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .btn-primary, .btn-outline {
-        width: 250px;
-        justify-content: center;
-    }
-
-    .slider {
-        height: 350px;
-    }
-    
-    .brand-text {
-        font-size: 2.5rem;
-        letter-spacing: 3px;
-    }
-    
-    .brand-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .slider-overlay {
-        padding: 2rem 1rem;
-    }
-
-    .features-grid,
-    .testimonial-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .testimonial-card {
-        padding: 2rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h2 {
-        font-size: 2rem;
-    }
-
-    .slider {
-        height: 280px;
-    }
-    
-    .brand-text {
-        font-size: 2rem;
-        letter-spacing: 2px;
-    }
-    
-    .brand-subtitle {
-        font-size: 1rem;
-    }
-
-    .features h2,
-    .testimonials h2,
-    .cta h2 {
-        font-size: 2.2rem;
-    }
-
-    .feature-card,
-    .testimonial-card {
-        padding: 1.8rem;
-    }
-}
-
-
 
 /* =====================
    PRODUCTS PAGE STYLES
@@ -768,18 +542,6 @@ footer {
     padding-bottom: 1rem;
 }
 
-.section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 4px;
-    background: linear-gradient(to right, #4fc3f7, #2979ff);
-    border-radius: 2px;
-}
-
 .filter-buttons {
     display: flex;
     justify-content: center;
@@ -800,8 +562,7 @@ footer {
     font-size: 1rem;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
+.filter-btn:hover, .filter-btn.active {
     background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
     color: white;
     transform: translateY(-3px);
@@ -917,122 +678,80 @@ footer {
     background: linear-gradient(135deg, #283593, #3949ab);
 }
 
-/* WhatsApp Success Notification */
-.whatsapp-notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-    z-index: 2000;
-    display: none;
+/* Search Container Styles */
+.search-container {
+    margin: 25px auto 15px;
+    max-width: 600px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
     align-items: center;
-    gap: 12px;
-    animation: slideIn 0.3s ease;
+    background: white;
+    border: 2px solid #2563eb;
+    border-radius: 50px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    transition: all 0.3s ease;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.search-box:focus-within {
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+    border-color: #1d4ed8;
+}
+
+.search-box i.fa-search {
+    color: #2563eb;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+#productSearch {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 5px 0;
+    background: transparent;
+}
+
+#clearSearch {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+#clearSearch:hover {
+    color: #ff4444;
+}
+
+.search-hint {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+.search-results-info {
+    text-align: center;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #f0f9ff;
+    border-radius: 20px;
+    color: #2563eb;
+    font-weight: 500;
+    display: none;
 }
 
 /* =====================
-   MOBILE RESPONSIVE FOR PRODUCTS
+   ABOUT PAGE STYLES
 ===================== */
-@media (max-width: 768px) {
-    .products {
-        padding: 2rem 1rem;
-    }
-    
-    .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .filter-buttons {
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-    }
-    
-    .filter-btn {
-        padding: 0.6rem 1.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .product-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .product-card img {
-        height: 180px;
-    }
-    
-    .product-card h3 {
-        font-size: 1.2rem;
-    }
-    
-    .product-price {
-        font-size: 1.4rem;
-    }
-    
-    .whatsapp-btn {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-    }
-    
-    .flow-btn {
-        width: 100%;
-        max-width: none;
-        padding: 0.9rem 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .section-title {
-        font-size: 1.8rem;
-    }
-    
-    .product-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
-    
-    .product-card {
-        padding: 1.2rem;
-    }
-    
-    .product-card img {
-        height: 160px;
-    }
-    
-    .filter-buttons {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .filter-btn {
-        width: 200px;
-    }
-}
-
-
-
-
-
-/* =====================
-   ABOUT PAGE STYLES (SPECIFIC TO ABOUT PAGE ONLY)
-===================== */
-
-/* About Hero Section - Only affects .about-hero in about.html */
 .about-hero {
     background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(26, 35, 126, 0.9)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
@@ -1043,22 +762,6 @@ footer {
     margin-bottom: 3rem;
     position: relative;
     overflow: hidden;
-}
-
-.about-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 20%, rgba(0,0,0,0.3) 100%);
-    z-index: 1;
-}
-
-.about-hero > * {
-    position: relative;
-    z-index: 2;
 }
 
 .about-hero h1 {
@@ -1075,14 +778,12 @@ footer {
     opacity: 0.9;
 }
 
-/* Container for about page */
 .about-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem 4rem;
 }
 
-/* Section card specific to about page */
 .about-section-card {
     background: white;
     border-radius: 15px;
@@ -1097,7 +798,6 @@ footer {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Specific title for about page */
 .about-section-title {
     color: #1a237e;
     font-size: 2.2rem;
@@ -1119,7 +819,6 @@ footer {
     line-height: 1.8;
 }
 
-/* Team Section - specific to about page */
 .about-team-section {
     display: flex;
     align-items: center;
@@ -1167,7 +866,6 @@ footer {
     border-left: 4px solid #4fc3f7;
 }
 
-/* Values Grid */
 .about-values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1200,7 +898,6 @@ footer {
     line-height: 1.6;
 }
 
-/* Repair Services */
 .about-repair-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1237,39 +934,6 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Info Boxes for about page */
-.about-info-box {
-    padding: 1.2rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-}
-
-.about-info-box i {
-    margin-top: 3px;
-}
-
-.about-info-box.success {
-    background: #e8f5e9;
-    border-left: 4px solid #4CAF50;
-    color: #2e7d32;
-}
-
-.about-info-box.info {
-    background: #e3f2fd;
-    border-left: 4px solid #2196F3;
-    color: #1565c0;
-}
-
-.about-info-box.warning {
-    background: #fff3cd;
-    border-left: 4px solid #ffc107;
-    color: #856404;
-}
-
-/* Repair Form for about page */
 .about-repair-form {
     background: #f8f9fa;
     padding: 2.5rem;
@@ -1308,7 +972,6 @@ footer {
     color: #e53935;
 }
 
-/* Use more specific selectors for form elements in about page */
 .about-repair-form select,
 .about-repair-form textarea,
 .about-repair-form input {
@@ -1343,7 +1006,6 @@ footer {
     font-style: italic;
 }
 
-/* About page specific buttons */
 .about-btn-primary {
     background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
     color: white;
@@ -1393,7 +1055,6 @@ footer {
     color: white;
 }
 
-/* CTA Section for about page */
 .about-cta-section {
     text-align: center;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -1409,7 +1070,6 @@ footer {
     padding: 1rem 0;
 }
 
-/* Success Message for about page */
 #aboutSuccessMsg {
     display: none;
     background: linear-gradient(135deg, #4CAF50, #2E7D32);
@@ -1421,152 +1081,6 @@ footer {
     animation: fadeIn 0.5s ease;
     box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
 }
-
-/* =====================
-   MOBILE RESPONSIVE FOR ABOUT PAGE
-===================== */
-@media (max-width: 992px) {
-    .about-hero h1 {
-        font-size: 2.8rem;
-    }
-    
-    .about-hero p {
-        font-size: 1.2rem;
-    }
-    
-    .about-team-section {
-        flex-direction: column;
-        gap: 3rem;
-    }
-    
-    .about-repair-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    
-    .about-repair-info {
-        padding-right: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-hero {
-        padding: 4rem 1.5rem;
-    }
-    
-    .about-hero h1 {
-        font-size: 2.3rem;
-    }
-    
-    .about-hero p {
-        font-size: 1.1rem;
-        padding: 0 1rem;
-    }
-    
-    .about-container {
-        padding: 0 1.5rem 3rem;
-    }
-    
-    .about-section-card {
-        padding: 2rem;
-    }
-    
-    .about-section-title {
-        font-size: 1.8rem;
-    }
-    
-    .about-team-card {
-        padding: 2rem;
-    }
-    
-    .about-team-image {
-        width: 180px;
-        height: 180px;
-    }
-    
-    .about-form-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .about-repair-form {
-        padding: 1.8rem;
-    }
-    
-    .about-btn-shadow {
-        display: block;
-        margin: 1rem 0;
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .about-actions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-hero h1 {
-        font-size: 2rem;
-    }
-    
-    .about-hero p {
-        font-size: 1rem;
-    }
-    
-    .about-section-card {
-        padding: 1.5rem;
-    }
-    
-    .about-section-title {
-        font-size: 1.6rem;
-    }
-    
-    .about-team-image {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .about-values-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .about-value-card {
-        padding: 1.5rem;
-    }
-    
-    .about-repair-points li {
-        font-size: 1rem;
-        padding: 0.6rem 0;
-    }
-    
-    .about-repair-form select,
-    .about-repair-form textarea,
-    .about-repair-form input {
-        padding: 0.8rem;
-        font-size: 0.95rem;
-    }
-    
-    .about-btn-primary {
-        padding: 0.9rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .about-btn-shadow {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-    }
-    
-    .about-info-box {
-        padding: 1rem;
-        font-size: 0.9rem;
-    }
-}
-
 
 /* =====================
    CONTACT PAGE STYLES
@@ -1698,21 +1212,10 @@ footer {
     border: 2px solid transparent;
 }
 
-.whatsapp-action-btn {
-    border-left: 4px solid #25D366;
-}
-
-.call-action-btn {
-    border-left: 4px solid #4fc3f7;
-}
-
-.products-action-btn {
-    border-left: 4px solid #1a237e;
-}
-
-.about-action-btn {
-    border-left: 4px solid #ff9800;
-}
+.whatsapp-action-btn { border-left: 4px solid #25D366; }
+.call-action-btn { border-left: 4px solid #4fc3f7; }
+.products-action-btn { border-left: 4px solid #1a237e; }
+.about-action-btn { border-left: 4px solid #ff9800; }
 
 .whatsapp-action-btn:hover,
 .call-action-btn:hover,
@@ -1722,81 +1225,6 @@ footer {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.whatsapp-action-btn:hover {
-    background: #f0f9f0;
-    border-color: #25D366;
-}
-
-.call-action-btn:hover {
-    background: #f0f7ff;
-    border-color: #4fc3f7;
-}
-
-.products-action-btn:hover {
-    background: #f0f2ff;
-    border-color: #1a237e;
-}
-
-.about-action-btn:hover {
-    background: #fff3e0;
-    border-color: #ff9800;
-}
-
-.whatsapp-action-btn i:first-child,
-.call-action-btn i:first-child,
-.products-action-btn i:first-child,
-.about-action-btn i:first-child {
-    font-size: 1.8rem;
-    width: 50px;
-    text-align: center;
-}
-
-.whatsapp-action-btn i:first-child {
-    color: #25D366;
-}
-
-.call-action-btn i:first-child {
-    color: #4fc3f7;
-}
-
-.products-action-btn i:first-child {
-    color: #1a237e;
-}
-
-.about-action-btn i:first-child {
-    color: #ff9800;
-}
-
-.whatsapp-action-btn div {
-    flex: 1;
-    margin: 0 1rem;
-}
-
-.whatsapp-action-btn h4 {
-    color: #333;
-    font-size: 1.2rem;
-    margin-bottom: 0.3rem;
-}
-
-.whatsapp-action-btn p {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.whatsapp-action-btn i:last-child {
-    color: #777;
-    transition: transform 0.3s ease;
-}
-
-.whatsapp-action-btn:hover i:last-child,
-.call-action-btn:hover i:last-child,
-.products-action-btn:hover i:last-child,
-.about-action-btn:hover i:last-child {
-    transform: translateX(5px);
-    color: #1a237e;
-}
-
-/* Map Section */
 .map-section {
     margin-bottom: 4rem;
 }
@@ -1828,19 +1256,6 @@ footer {
     align-items: center;
 }
 
-.map-overlay p {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0;
-    font-size: 0.9rem;
-}
-
-.map-overlay i {
-    color: #4fc3f7;
-}
-
-/* Quick Contact Form */
 .quick-contact-form {
     background: white;
     padding: 2.5rem;
@@ -1866,7 +1281,8 @@ footer {
     grid-column: 1 / -1;
 }
 
-.form-input {
+.form-input,
+.form-textarea {
     width: 100%;
     padding: 1rem;
     border: 2px solid #ddd;
@@ -1875,23 +1291,7 @@ footer {
     transition: all 0.3s ease;
 }
 
-.form-input:focus {
-    outline: none;
-    border-color: #4fc3f7;
-    box-shadow: 0 0 0 3px rgba(79, 195, 247, 0.2);
-}
-
-.form-textarea {
-    width: 100%;
-    padding: 1rem;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    resize: vertical;
-    min-height: 120px;
-}
-
+.form-input:focus,
 .form-textarea:focus {
     outline: none;
     border-color: #4fc3f7;
@@ -1921,356 +1321,22 @@ footer {
     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
 }
 
-/* Flow Buttons */
-.flow-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.flow-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #1a237e, #283593);
-    color: white;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(26, 35, 126, 0.2);
-}
-
-.flow-btn.outline {
-    background: white;
-    color: #1a237e;
-    border: 2px solid #1a237e;
-}
-
-.flow-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(26, 35, 126, 0.3);
-}
-
-.flow-btn.outline:hover {
-    background: #1a237e;
-    color: white;
-}
-
-/* =====================
-   MOBILE RESPONSIVE FOR CONTACT PAGE
-===================== */
+/* Responsive adjustments */
 @media (max-width: 992px) {
-    .contact-info-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-    
-    .contact-actions {
-        order: -1;
-    }
+    .about-team-section { flex-direction: column; gap: 3rem; }
+    .about-repair-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-info-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-actions { order: -1; }
 }
 
 @media (max-width: 768px) {
-    .contact-section {
-        padding: 2rem 1.5rem;
-    }
-    
-    .contact-title {
-        font-size: 2.2rem;
-        margin-bottom: 2rem;
-    }
-    
-    .contact-item {
-        padding: 1.2rem;
-    }
-    
-    .whatsapp-action-btn,
-    .call-action-btn,
-    .products-action-btn,
-    .about-action-btn {
-        padding: 1.2rem;
-    }
-    
-    .map-overlay {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
-        padding: 1rem;
-    }
-    
-    .form-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    .quick-contact-form {
-        padding: 1.8rem;
-    }
-    
-    .flow-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .flow-btn {
-        width: 100%;
-        max-width: 300px;
-    }
+    .navbar { flex-direction: column; gap: 1rem; padding: 1rem; }
+    nav { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .hero { padding: 2rem 1rem; }
+    .hero-glass-card h2 { font-size: 2.5rem; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .floating-laptop-container { height: 350px; }
+    .features-grid, .testimonial-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .flow-buttons { flex-direction: column; align-items: center; gap: 1rem; }
 }
-
-@media (max-width: 480px) {
-    .contact-title {
-        font-size: 1.8rem;
-    }
-    
-    .contact-item {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-    
-    .contact-icon {
-        margin: 0 auto;
-    }
-    
-    .whatsapp-action-btn,
-    .call-action-btn,
-    .products-action-btn,
-    .about-action-btn {
-        flex-direction: column;
-        text-align: center;
-        gap: 0.8rem;
-    }
-    
-    .whatsapp-action-btn div {
-        margin: 0;
-    }
-    
-    .whatsapp-action-btn i:last-child {
-        display: none;
-    }
-    
-    .phone-number {
-        font-size: 1.2rem;
-    }
-    
-    .map-container iframe {
-        height: 300px;
-    }
-    
-    .form-input,
-    .form-textarea {
-        padding: 0.9rem;
-    }
-    
-    .send-message-btn {
-        padding: 1rem;
-        font-size: 1rem;
-    }
-}
-
-
-/* Search match highlighting */
-mark {
-    background-color: #ffd700;
-    color: #000;
-    padding: 1px 3px;
-    border-radius: 2px;
-    font-weight: bold;
-}
-
-/* Notification animation */
-@keyframes slideIn {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.whatsapp-notification {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #25D366;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 50px;
-    display: none;
-    align-items: center;
-    gap: 10px;
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-    animation: slideIn 0.3s ease;
-}
-
-.whatsapp-notification i {
-    font-size: 24px;
-}
-/* SEARCHBAR STYLE/
-/* Search Container Styles */
-.search-container {
-    margin: 25px auto 15px;
-    max-width: 600px;
-}
-
-.search-box {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: white;
-    border: 2px solid #2563eb;
-    border-radius: 50px;
-    padding: 12px 20px;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
-    transition: all 0.3s ease;
-}
-
-.search-box:focus-within {
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
-    border-color: #1d4ed8;
-}
-
-.search-box i.fa-search {
-    color: #2563eb;
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-#productSearch {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 5px 0;
-    background: transparent;
-}
-
-#clearSearch {
-    background: none;
-    border: none;
-    color: #999;
-    cursor: pointer;
-    padding: 5px;
-    font-size: 18px;
-    transition: color 0.2s;
-}
-
-#clearSearch:hover {
-    color: #ff4444;
-}
-
-.search-hint {
-    text-align: center;
-    margin-top: 8px;
-    font-size: 14px;
-    color: #666;
-    font-style: italic;
-}
-
-.search-results-info {
-    text-align: center;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #f0f9ff;
-    border-radius: 20px;
-    color: #2563eb;
-    font-weight: 500;
-    display: none;
-}
-
-/* Highlight for search matches */
-.product-card.highlight {
-    box-shadow: 0 0 0 3px #2563eb;
-    transform: translateY(-5px);
-}
-
-.product-card .search-match {
-    background-color: #fff3cd;
-    padding: 2px 4px;
-    border-radius: 3px;
-    font-weight: bold;
-}
-
-/* No results message */
-.no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    color: #666;
-}
-
-.no-results i {
-    font-size: 48px;
-    color: #ccc;
-    margin-bottom: 15px;
-}
-
-/* Responsive search */
-@media (max-width: 768px) {
-    .search-box {
-        padding: 10px 15px;
-    }
-    
-    #productSearch {
-        font-size: 14px;
-    }
-    
-    .search-container {
-        margin: 20px 10px 10px;
-    }
-} 
-/* SEARCH STYLE/
-/* WhatsApp Floating Button */
-.whatsapp-float {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-    z-index: 100;
-    transition: transform 0.3s;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-}
-
-/* Call Float Button (already exists) */
-.call-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    background: #2563eb;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-    z-index: 100;
-}
-
-
-
